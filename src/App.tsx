@@ -16,7 +16,7 @@ type guessesParams = {
 };
 
 const today: any = new Date();
-const startDate: any = new Date("2024-07-28");
+const startDate: any = new Date("2024-08-04");
 const diffTime = Math.abs(today - startDate);
 const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 const currentDate = new Date().toISOString().split("T")[0];
