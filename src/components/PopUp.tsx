@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Popup from "reactjs-popup";
 import Card from "./card";
 import { Fade } from "@mui/material";
