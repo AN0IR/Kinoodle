@@ -1,6 +1,6 @@
 {
     "name": "kinoodle",
-    "private": true,
+    "private": false,
     "version": "0.0.0",
     "type": "module",
     "homepage": "https://an0ir.github.io/Kinoodle",
