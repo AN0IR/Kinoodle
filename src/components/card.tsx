@@ -8,11 +8,12 @@ type movieParams = {
     genre: string[];
     poster: string;
     actors: string[];
+    director: string;
     movie: any;
     isInResult: boolean;
 };
 
-function Card({ name, year, rating, poster, actors, genre, movie, isInResult }: movieParams) {
+function Card({ name, year, rating, poster, actors, genre, director, movie, isInResult }: movieParams) {
     const isYearClose = Math.abs(movie.year - year) <= 10 && movie.year !== year;
     const isRatingClose = Math.abs(movie.rating - rating) <= 0.3 && movie.rating !== rating;
     const correct = name !== movie.name ? false : true;
@@ -24,49 +25,79 @@ function Card({ name, year, rating, poster, actors, genre, movie, isInResult }: 
             <Fade in={true} {...(true ? { timeout: 1400 } : {})}>
                 <div className="card">
                     <img src={poster} alt="" />
-                    <div className="description stats">
-                        <div className={correct ? "block name correct" : "block name"}>{name}</div>
 
-                        <div
-                            className={
-                                !isYearClose
-                                    ? isYearCorrect
-                                        ? "block year correct"
-                                        : "block year"
-                                    : "block year close"
-                            }
-                        >
-                            {year} {!isYearCorrect && (year > movie.year ? <ChevronDown /> : <ChevronUp />)}
-                        </div>
-
-                        <div
-                            className={
-                                !isRatingClose
-                                    ? isRatingCorrect
-                                        ? "block rating correct"
-                                        : "block rating"
-                                    : "block rating close"
-                            }
-                        >
-                            {rating} {!isRatingCorrect && (rating > movie.rating ? <ChevronDown /> : <ChevronUp />)}
-                        </div>
-                    </div>
-                    <div className="info">
-                        <div className="description actors">
-                            <h2>Actors</h2>
-                            {actors.map((item, id) => {
-                                return (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                        <div className="info">
+                            <div className="info-row">
+                                <div className="description">
+                                    <h2 className={isInResult ? "in-result" : ""}>Name</h2>
+                                    <div className={correct ? "block name correct" : "block name"}>{name}</div>
+                                </div>
+                                <div className="description">
+                                    <h2 className={isInResult ? "in-result" : ""}>Rating</h2>
                                     <div
-                                        className={movie.actors.includes(item) ? "block actor correct" : "block actor"}
-                                        key={id}
+                                        className={
+                                            !isRatingClose
+                                                ? isRatingCorrect
+                                                    ? "block rating correct"
+                                                    : "block rating"
+                                                : "block rating close"
+                                        }
                                     >
-                                        {item}
+                                        {rating}{" "}
+                                        {!isRatingCorrect && (rating > movie.rating ? <ChevronDown /> : <ChevronUp />)}
                                     </div>
-                                );
-                            })}
+                                </div>
+                            </div>
+
+                            <div className="info-row">
+                                <div className="description actors">
+                                    <h2 className={isInResult ? "in-result" : ""}>Actors</h2>
+                                    {actors.map((item, id) => {
+                                        return (
+                                            <div
+                                                className={
+                                                    movie.actors.includes(item) ? "block actor correct" : "block actor"
+                                                }
+                                                key={id}
+                                            >
+                                                {item}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="info-row">
+                                <div className="description">
+                                    <h2 className={isInResult ? "in-result" : ""}>Director</h2>
+                                    <div
+                                        className={
+                                            movie.director === director ? "block director correct" : "block director"
+                                        }
+                                    >
+                                        {director}
+                                    </div>
+                                </div>
+                                <div className="description">
+                                    <h2 className={isInResult ? "in-result" : ""}>Year</h2>
+                                    <div
+                                        className={
+                                            !isYearClose
+                                                ? isYearCorrect
+                                                    ? "block year correct"
+                                                    : "block year"
+                                                : "block year close"
+                                        }
+                                    >
+                                        {year} {!isYearCorrect && (year > movie.year ? <ChevronDown /> : <ChevronUp />)}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                         <div className="description genres">
-                            <h2>Genres</h2>
+                            <h2 className={isInResult ? "in-result" : ""}>Genres</h2>
                             {genre.map((item, id) => {
                                 return (
                                     <div

@@ -13,6 +13,7 @@ type PopUpProps = {
         genre: string[];
         poster: string;
         actors: string[];
+        director: string;
     };
 };
 
@@ -34,6 +35,7 @@ function PopUp({ isGameOver, movie }: PopUpProps) {
                                     poster={movie.poster}
                                     actors={movie.actors}
                                     genre={movie.genre}
+                                    director={movie.director}
                                     movie={movie}
                                     key={movie.name}
                                     isInResult={true}

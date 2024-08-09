@@ -5,6 +5,7 @@ type movieParams = {
     genre: string[];
     poster: string;
     actors: string[];
+    director: string;
 };
 
 function fetchWord(unformattedWord: any): movieParams {
@@ -15,6 +16,7 @@ function fetchWord(unformattedWord: any): movieParams {
         poster: unformattedWord.image_url,
         genre: unformattedWord.genre,
         actors: unformattedWord.actors,
+        director: unformattedWord.directors[0],
     };
     return word;
 }

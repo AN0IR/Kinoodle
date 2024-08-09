@@ -13,6 +13,7 @@ type guessesParams = {
     genre: string[];
     poster: string;
     actors: string[];
+    director: string;
 };
 
 const today: any = new Date();
@@ -39,6 +40,7 @@ function App() {
         genre: [""],
         poster: "",
         actors: [""],
+        director: "",
     });
 
     const [input, setInput] = useState<string>("");
@@ -52,9 +54,7 @@ function App() {
         const localGuesses = window.localStorage.getItem("guesses");
         const storedDate = window.localStorage.getItem("lastVisitDate");
 
-        console.log(storedDate, currentDate);
         if (storedDate !== currentDate) {
-            console.log("New day detected");
             setGuesses([]);
             setGuessCount(0);
             setIsGameOver(false);
@@ -101,7 +101,7 @@ function App() {
 
     function handleClick() {
         data.filter((item) => {
-            if (item.name === input) {
+            if (item.name.toLowerCase() === input.toLowerCase()) {
                 const currentGuess: guessesParams = fetchWord(item);
 
                 if (!guesses.some((item) => item?.name === currentGuess.name)) {
@@ -150,6 +150,7 @@ function App() {
                             poster={item.poster}
                             actors={item.actors}
                             genre={item.genre}
+                            director={item.director}
                             movie={movie}
                             key={item.name}
                             isInResult={false}
