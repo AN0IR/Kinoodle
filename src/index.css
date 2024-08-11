@@ -100,6 +100,10 @@ h2 {
     }
 }
 
+.divider {
+    width: 850px;
+}
+
 .info {
     display: flex;
     flex-direction: row;
@@ -154,7 +158,8 @@ h2 {
         width: max-content;
     }
 
-    &.name {
+    &.name,
+    &.director {
         text-wrap: pretty;
         max-width: 10rem;
     }
@@ -325,5 +330,66 @@ h2 {
 
     &:active {
         scale: 1;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 900px) {
+    html {
+        font-size: 0.9rem;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .board {
+        align-items: center;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+
+        & img {
+            max-height: 19rem;
+        }
+    }
+
+    .info {
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+
+    .director {
+        padding: 0.5rem 0.5rem;
+        max-width: fit-content;
+    }
+
+    .guessCount {
+        width: 85%;
+    }
+
+    .searchbar {
+        width: 16rem;
+    }
+
+    .divider {
+        width: 100%;
+    }
+
+    .result-window {
+        height: fit-content;
+        padding: 1.5rem 1rem;
+        width: 95%;
+
+        & > div > .card {
+            padding: 2rem 0 0 0;
+        }
+    }
+
+    .result {
+        margin-top: 1rem;
     }
 }

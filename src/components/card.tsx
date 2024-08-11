@@ -26,7 +26,7 @@ function Card({ name, year, rating, poster, actors, genre, director, movie, isIn
                 <div className="card">
                     <img src={poster} alt="" />
 
-                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
                         <div className="info">
                             <div className="info-row">
                                 <div className="description">
@@ -113,7 +113,7 @@ function Card({ name, year, rating, poster, actors, genre, director, movie, isIn
                 </div>
             </Fade>
             <Grow in={!isInResult} {...(true ? { timeout: 400 } : {})}>
-                <svg width="850" height="5" viewBox="0 0 986 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="divider" height="5" viewBox="0 0 986 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {" "}
                     <path d="M0.5 3H985.5" stroke="#9D5141" strokeWidth="5" strokeDasharray="28 28" />{" "}
                 </svg>
