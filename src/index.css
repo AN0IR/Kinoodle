@@ -307,9 +307,17 @@ h2 {
     padding: 2rem;
     width: fit-content;
 
+    & > div > .card {
+        padding: 2rem 0 1rem 0;
+    }
+
     & > * {
         color: white;
     }
+}
+
+.result {
+    margin-top: 1rem;
 }
 
 .close-button {
