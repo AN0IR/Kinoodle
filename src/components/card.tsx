@@ -14,7 +14,7 @@ type movieParams = {
 };
 
 function Card({ name, year, rating, poster, actors, genre, director, movie, isInResult }: movieParams) {
-    const isYearClose = Math.abs(movie.year - year) <= 10 && movie.year !== year;
+    const isYearClose = Math.abs(movie.year - year) <= 5 && movie.year !== year;
     const isRatingClose = Math.abs(movie.rating - rating) <= 0.3 && movie.rating !== rating;
     const correct = name !== movie.name ? false : true;
     const isYearCorrect = year === movie.year;
